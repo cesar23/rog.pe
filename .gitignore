@@ -1,0 +1,108 @@
+# ============================================
+# DOCUMENTACION INTERNA
+# ============================================
+docs_devops/
+project_structure_docs/
+
+# ============================================
+# Data que genera docker
+# ============================================
+data/*
+
+# ============================================
+# RESOURCES - solo .psd y .ai
+# ============================================
+Resources/*
+!Resources/*.psd
+!Resources/*.ai
+!Resources/sql/rog_web.sql
+
+# ============================================
+# WORDPRESS CORE
+# ============================================
+www/html/public_html/wp-admin/
+www/html/public_html/wp-includes/
+
+# WordPress core files
+www/html/public_html/wp-activate.php
+www/html/public_html/wp-blog-header.php
+www/html/public_html/wp-cli.phar
+www/html/public_html/wp-comments-post.php
+www/html/public_html/wp-cron.php
+www/html/public_html/wp-links-opml.php
+www/html/public_html/wp-load.php
+www/html/public_html/wp-login.php
+www/html/public_html/wp-mail.php
+www/html/public_html/wp-settings.php
+www/html/public_html/wp-signup.php
+www/html/public_html/wp-trackback.php
+www/html/public_html/xmlrpc.php
+www/html/public_html/index.php
+www/html/public_html/license.txt
+www/html/public_html/readme.html
+
+# ============================================
+# WP-CONTENT / UPLOADS Y CACHE
+# ============================================
+www/html/public_html/wp-content/uploads/
+www/html/public_html/wp-content/upgrade/
+www/html/public_html/wp-content/cache/
+www/html/public_html/wp-content/backup*/
+www/html/public_html/wp-content/advanced-cache.php
+www/html/public_html/wp-content/wp-cache-config.php
+
+# ============================================
+# THEMES - omitir todos EXCEPTO los tuyos
+# ============================================
+www/html/public_html/wp-content/themes/*
+!www/html/public_html/wp-content/themes/flatsome/
+!www/html/public_html/wp-content/themes/flatsome-child/
+
+# ============================================
+# PLUGINS - omitir todos EXCEPTO los tuyos
+# ============================================
+www/html/public_html/wp-content/plugins/*
+!www/html/public_html/wp-content/plugins/solu-admin-utils/
+!www/html/public_html/wp-content/plugins/solu-currencies-exchange-rate/
+!www/html/public_html/wp-content/plugins/solu-generate-html/
+!www/html/public_html/wp-content/plugins/solu-product-logs/
+
+# ============================================
+# DIRECTORIOS CUSTOM - INCLUIR
+# ============================================
+# api_rest_sync y soluciones-tools se incluyen automáticamente
+# (no están en ninguna regla de exclusión)
+
+# ============================================
+# CONFIGURACIÓN Y CREDENCIALES
+# ============================================
+www/html/public_html/wp-config.php
+.env
+.env.*
+!.env.*.example
+!.env.example
+!.env.development.example
+
+# ============================================
+# LOGS
+# ============================================
+*.log
+www/html/public_html/solu_log.log
+www/html/public_html/solu_log_error.log
+
+# ============================================
+# DOCKER
+# ============================================
+.docker/volumes/
+.docker/mysql/
+
+# ============================================
+# SISTEMA
+# ============================================
+.DS_Store
+Thumbs.db
+.idea/
+node_modules/
+*.tmp
+*.bak
+.htaccess.bk

@@ -1,0 +1,73 @@
+/* Estilos CSS personalizados para el admin */
+
+/* Badges para tipos de códigos */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.badge-category {
+    background-color: #0073aa;
+}
+
+.badge-brand {
+    background-color: #46b450;
+}
+
+.badge-other {
+    background-color: #666;
+}
+
+/* Mejoras en la tabla */
+.wp-list-table th {
+    font-weight: 600;
+}
+
+.wp-list-table code {
+    background: #f6f7f7;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 12px;
+    max-width: 200px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Estadísticas */
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+/* Formularios */
+.form-table th {
+    width: 200px;
+}
+
+.form-table textarea.code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.wp-list-table .column-actions {
+    width: 120px;
+}

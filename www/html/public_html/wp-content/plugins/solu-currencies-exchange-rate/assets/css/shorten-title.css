@@ -1,0 +1,24 @@
+/*
+  Estilos para truncar el título de los productos en las listas de productos 
+  (widgets,listados) de WooCommerce.
+  - line-height: Establece la altura de la línea del texto.
+  - overflow: hidden; Oculta cualquier parte del texto que se desborde del contenedor.
+  - text-overflow: ellipsis; Muestra puntos suspensivos ("...") al final del texto truncado.
+  - display: block; Convierte el enlace en un elemento de bloque.
+  - white-space: nowrap; Evita que el texto se ajuste a la siguiente línea.
+*/
+.woocommerce ul.product_list_widget li a {
+  line-height: 1.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}
+
+.box-text .product-title a {
+  line-height: 1.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}

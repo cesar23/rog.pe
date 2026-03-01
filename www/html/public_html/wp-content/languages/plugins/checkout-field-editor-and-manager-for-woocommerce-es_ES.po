@@ -1,0 +1,141 @@
+# Translation of Plugins - Checkout Field Editor for WooCommerce &#8211; Checkout Manager - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Checkout Field Editor for WooCommerce &#8211; Checkout Manager - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-11-25 05:24:13+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Checkout Field Editor for WooCommerce &#8211; Checkout Manager - Stable (latest release)\n"
+
+#: includes/class-awcfe-front-end.php:956
+msgid "%s is not a valid URL."
+msgstr "%s no es una URL válida."
+
+#: includes/class-awcfe-backend.php:214
+msgid "Upgrade to PRO"
+msgstr "Actualizar a PRO"
+
+#. translators: %s: field name
+#: includes/class-awcfe-front-end.php:1017
+msgid "%s is a required field."
+msgstr "%s es un campo obligatorio."
+
+#. translators: %s: email address
+#: includes/class-awcfe-front-end.php:979
+msgid "%s is not a valid email address."
+msgstr "%s no es una dirección de correo electrónico válida."
+
+#. translators: %s: phone number
+#: includes/class-awcfe-front-end.php:964
+msgid "%s is not a valid phone number."
+msgstr "%s no es un número de teléfono válido."
+
+#. translators: %s: field name
+#: includes/class-awcfe-front-end.php:926
+msgid "%s is not a valid postcode / ZIP."
+msgstr "%s no es un código postal válido."
+
+#. translators: %s: field name
+#: includes/class-awcfe-front-end.php:898
+msgctxt "checkout-validation"
+msgid "Billing %s"
+msgstr "Facturación %s"
+
+#. translators: %s: field name
+#: includes/class-awcfe-front-end.php:894
+msgctxt "checkout-validation"
+msgid "Shipping %s"
+msgstr "Envío %s"
+
+#: includes/class-awcfe-front-end.php:1041
+msgid "No shipping method has been selected. Please double check your address, or contact us if you need any help."
+msgstr "No hay métodos de envío disponibles. Por favor, vuelve a revisar tu dirección, o contáctanos si necesitas ayuda."
+
+#. translators: %s: shipping location
+#: includes/class-awcfe-front-end.php:1035
+msgid "Unfortunately <strong>we do not ship %s</strong>. Please enter an alternative shipping address."
+msgstr "Desafortunadamente, <strong>no enviamos a %s</strong>. Por favor, introduce una dirección de envío alternativa."
+
+#. translators: 1: state field 2: valid states
+#: includes/class-awcfe-front-end.php:1009
+msgid "%1$s is not valid. Please enter one of the following: %2$s"
+msgstr "%1$s no es válido. Por favor, introduce uno de los siguientes: %2$s"
+
+#. translators: %1$s: field name, %2$s finder.eircode.ie URL
+#: includes/class-awcfe-front-end.php:922
+msgid "%1$s is not valid. You can look up the correct Eircode <a target=\"_blank\" href=\"%2$s\">here</a>."
+msgstr "%1$s no es válido. Puedes buscar el Eircode correcto <a target=\"_blank\" href=\"%2$s\">aquí</a>."
+
+#: includes/class-awcfe-front-end.php:1026
+msgid "Please read and accept the terms and conditions to proceed with your order."
+msgstr "Por favor, lee y acepta los términos y condiciones para proceder con tu pedido."
+
+#: includes/class-awcfe-front-end.php:1051
+msgid "Invalid payment method."
+msgstr "Método de pago no válido.   "
+
+#: includes/class-awcfe-front-end.php:1032
+msgid "Please enter an address to continue."
+msgstr "Por favor, introduce una dirección para continuar."
+
+#: includes/class-awcfe-fields.php:711
+msgid "Add New Address"
+msgstr "Añadir nueva dirección"
+
+#: includes/class-awcfe-front-end.php:191
+#: includes/class-awcfe-front-end.php:237
+msgid "Extra Fields"
+msgstr "Campos adicionales"
+
+#: includes/class-awcfe-fields.php:586 assets/js/backend.js:1
+msgid "Fields"
+msgstr "Campos"
+
+#. Author of the plugin
+#: start.php
+msgid "Acowebs"
+msgstr "Acowebs"
+
+#: includes/class-awcfe-front-end.php:640
+#: includes/class-awcfe-front-end.php:649
+msgid "Billing extra fields"
+msgstr "Campos adicionales de facturación"
+
+#: includes/class-awcfe-front-end.php:694
+#: includes/class-awcfe-front-end.php:706
+msgid "Order extra fields"
+msgstr "Campos adicionales del pedido"
+
+#: includes/class-awcfe-backend.php:183 includes/class-awcfe-backend.php:192
+#: includes/class-awcfe-backend.php:213 assets/js/backend.js:1
+msgid "Checkout Fields"
+msgstr "Campos de pago"
+
+#: includes/class-awcfe-backend.php:182
+msgid "WooCommerce Checkout Fields Editor"
+msgstr "Editor de campos de pago de WooCommerce"
+
+#. Author URI of the plugin
+#: start.php
+msgid "http://acowebs.com"
+msgstr "http://acowebs.com"
+
+#: includes/class-awcfe-api.php:143 includes/class-awcfe-api.php:153
+#: includes/class-awcfe-backend.php:300 includes/class-awcfe-backend.php:310
+#: includes/class-awcfe-ml.php:248 includes/class-awcfe-ml.php:258
+msgid "Cheatin&#8217; huh?"
+msgstr "Haciendo trampas, ¿eh?"
+
+#. Description of the plugin
+#: start.php
+msgid "WooCommerce checkout field editor and manager helps to manage checkout fields in WooCommerce"
+msgstr "El editor y gestor de campos de pago de WooCommerce ayuda a gestionar los campos de pago en WooCommerce"
+
+#. Plugin Name of the plugin
+#: start.php
+msgid "Checkout Field Editor and Manager for WooCommerce"
+msgstr "Checkout Field Editor and Manager for WooCommerce"

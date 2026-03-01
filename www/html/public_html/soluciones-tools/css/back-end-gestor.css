@@ -1,0 +1,91 @@
+/*
+version: 2.0.1
+ */
+/* ==================================
+START PRECARGA
+ ================================== */
+/* Oculta el contenido inicialmente con opacidad 0 y añade un fondo oscuro */
+body {
+    opacity: 0;
+    background-color: #2b2929; /* Fondo oscuro mientras carga */
+
+}
+
+/* Clase que muestra el contenido con opacidad 1 */
+body.visible {
+    opacity: 1;
+    background-color: #fff; /* Cambia el fondo a blanco o el color que prefieras */
+    transition: opacity 3s ease-in-out; /* Transición suave de 1 segundo */
+}
+
+/* Estilos para el contenedor del texto de carga */
+#loading-icon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semitransparente */
+    z-index: 9999; /* Asegura que esté sobre todo el contenido */
+    color: white; /* Color del texto */
+    font-size: 2em; /* Tamaño del texto */
+    font-family: 'Arial', sans-serif; /* Fuente del texto */
+    letter-spacing: 5px; /* Espaciado entre letras */
+    animation: blinkText 1.5s ease-in-out infinite; /* Animación de parpadeo */
+}
+
+/* Animación para hacer que el texto parpadee */
+@keyframes blinkText {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Oculta el contenedor de carga cuando el contenido está listo */
+body.visible #loading-icon-container {
+    display: none;
+}
+/* ==================================
+END PRECARGA
+ ================================== */
+/*ocultar opciones de escritorio y ayuda wp */
+#screen-meta-links{
+    display:none;
+}
+/*---- ocultar el contenido y con el js mostralo denuvo------*/
+#adminmenuwrap{
+    display:none;
+}
+
+
+#product_cat-all{
+    font-size: 0.8em !important;
+}
+
+/*---- Ocultar Paneles de Flatsone ------*/
+#wpadminbar #wp-admin-bar-flatsome_panel,#wp-admin-bar-flatsome-activate{
+    display:none;
+}
+
+/*---- Ocultar Paneles de Yoast ------*/
+#wpadminbar #wp-admin-bar-wpseo-menu{
+    display:none;
+}
+
+/*---- Ocultar Paneles de Graviti forms ------*/
+#wpadminbar #wp-admin-bar-gform-forms{
+    display:none;
+}
+
+#wp-admin-bar-updates{
+    display:none;
+}

@@ -1,0 +1,256 @@
+services:
+  # -----------------------------------------------------------------------
+  # Servidor web (OpenLiteSpeed + PHP)
+  # -----------------------------------------------------------------------
+  litespeed:
+    build:
+      context: .docker/litespeed
+      dockerfile: Dockerfile
+      args:
+        ADMIN_PASS: ${ADMIN_PASS}
+        SSH_PASSWORD: ${SSH_PASSWORD}
+    container_name: ${WEB_CONTAINER_NAME}
+    env_file:
+      - .env.development
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      PUID: ${UID:-1000}
+      PGID: ${GID:-1000}
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASS: ${ADMIN_PASS:-litespeed}
+    volumes:
+      # Sitio web principal
+      - ./www/html:/var/www/html
+      # Logs del servidor
+      - ./data/lws/logs:/usr/local/lsws/logs
+      # ========== CONFIGURACIÓN EDITABLE ==========
+      # Configuración principal de LiteSpeed
+      - .docker/litespeed/conf/httpd_config.conf:/usr/local/lsws/conf/httpd_config.conf
+      # Configuración del virtual host
+      - .docker/litespeed/conf/vhosts/default/vhconf.conf:/usr/local/lsws/conf/vhosts/default/vhconf.conf
+      # Admin panel config (persistencia)
+      - .docker/litespeed/admin/conf/admin_config.conf:/usr/local/lsws/admin/conf/admin_config.conf
+      # certificado default:
+      - .docker/litespeed/conf/cert/default.key:/usr/local/lsws/conf/cert/default.key:ro
+      - .docker/litespeed/conf/cert/default.crt:/usr/local/lsws/conf/cert/default.crt:ro
+      # Script para corregir permisos (se ejecuta al iniciar el contenedor)
+      - .docker/litespeed/bin/fix-perms.sh:/usr/local/bin/fix-perms.sh:ro
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"   # ← añadir
+      - "${ADMIN_PORT:-7080}:7080"
+      - "${SSH_PORT:-2222}:2222"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    healthcheck:
+      # FIX: curl puede no estar disponible; wget suele venir en imágenes Alpine/OLS
+      test: ["CMD-SHELL", "curl -sf http://localhost/ || wget -qO- http://localhost/ > /dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+      - "com.docker.compose.service=web-server"
+    networks:
+      - internal
+      - external_net
+
+  # -----------------------------------------------------------------------
+  # Base de datos (MariaDB)
+  # -----------------------------------------------------------------------
+  mariadb:
+    # FIX: nombre unificado a MARIADB_CONTAINER_NAME (consistente con resto de vars MARIADB_*)
+    container_name: ${COMPOSE_PROJECT_NAME}-${MARIADB_CONTAINER_NAME}
+    image: mariadb:${MARIADB_VERSION}
+    restart: unless-stopped
+    env_file:
+      - .env.development
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_logs:/var/log/mysql
+    environment:
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    healthcheck:
+      # FIX: sintaxis correcta para mariadb-admin con contraseña
+      test: ["CMD", "mariadb-admin", "ping", "-uroot", "-p${MARIADB_ROOT_PASSWORD}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+      - "com.docker.compose.service=mariadb"
+    networks:
+      - internal
+      # quitar en modo produccion
+      - external_net
+
+  # -----------------------------------------------------------------------
+  # phpMyAdmin
+  # Comentar todo este bloque para desactivarlo temporalmente
+  # -----------------------------------------------------------------------
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ${COMPOSE_PROJECT_NAME}-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    # FIX: "links" está deprecado en Compose moderno; la red "internal" ya
+    # permite que los contenedores se resuelvan por nombre de servicio.
+    environment:
+      PMA_HOST: mariadb
+      # FIX: PMA_PORT debe ser solo el número, no "host:container"
+      PMA_PORT: ${MYSQL_PORT:-3306}
+      PMA_USER: root
+      PMA_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      # FIX: unificado a MARIADB_* para consistencia
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_USER: ${MARIADB_USER}
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD}
+      UPLOAD_LIMIT: ${UPLOAD_LIMIT:-64M}
+      MEMORY_LIMIT: ${MEMORY_LIMIT:-256M}
+    ports:
+      - "${HOST_MACHINE_PMA_PORT:-8080}:80"
+    volumes:
+      # FIX: volumen nombrado en lugar de anónimo (/sessions) para persistencia real
+      - pma_sessions:/sessions
+      - .docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+      - "com.docker.compose.service=phpmyadmin"
+    networks:
+      - internal
+      - external_net
+  # -----------------------------------------------------------------------
+  # Tinyfile Manager
+  # Comentar todo este bloque para desactivarlo temporalmente
+  # -----------------------------------------------------------------------
+  tinyfilemanager:
+    image: tinyfilemanager/tinyfilemanager:latest
+    container_name: ${COMPOSE_PROJECT_NAME}-tinyfilemanager
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      PUID: ${UID:-1000}
+      PGID: ${GID:-1000}
+      # Configurar usuarios (opcional)
+      # FM_ROOT_PATH: /var/www
+      # FM_ROOT_URL: http://localhost:8091/
+    volumes:
+      - ./www/html:/data
+      # ficheros de mi repo : https://gitlab.com/perucaos/project_tinyfilemanager#
+      - .docker/tinyfilemanager:/var/www/html:ro
+      # - ./data/tinyfilemanager:/config
+    ports:
+      - "${TINY_FILE_MANAGER_PORT:-8091}:80"
+    command: ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html"]
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+      - "com.docker.compose.service=tinyfilemanager"
+    networks:
+      - internal
+      - external_net
+
+  code-server:
+    build:
+      context: .docker/code-server
+      dockerfile: Dockerfile
+    container_name: code-server
+    env_file:
+      - .env.development
+    restart: unless-stopped
+    user: "${NOBODY_USER:-65534}:${NOBODY_GROUP:-65534}"
+    environment:
+      TZ: ${TZ}
+      PUID: ${UID:-1000}
+      PGID: ${GID:-1000}
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASS: ${ADMIN_PASS:-litespeed}
+      PASSWORD: ${CODE_SERVER_PASSWORD:-cesar203}
+      SUDO_PASSWORD: ${CODE_SERVER_PASSWORD:-cesar203}
+      DEFAULT_WORKSPACE: /workspace
+      # Usar directorios temporales dentro del contenedor
+      XDG_CONFIG_HOME: /tmp/.config
+      XDG_DATA_HOME: /tmp/.local
+
+    volumes:
+      # Acceso a tu proyecto completo
+      # - ./:/workspace
+      # Acceso directo a tu webroot
+      - ./www/html:/workspace/html
+      # Configuración persistente de code-server
+      # Persistir extensiones en el host
+      - ./data/code-server/extensions:/home/nobody/.local/share/code-server/extensions
+      - ./data/code-server/User/settings.json:/home/nobody/.local/share/code-server/User/settings.json
+      - ./data/code-server/config:/home/nobody/.config/code-server
+      # - ./data/code-server/config:/home/coder/.config
+      # Entrypoint personalizado (opcional)
+      - .docker/code-server/entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: ["/entrypoint.sh"]
+    ports:
+      - "${CODE_SERVER_PORT:-8443}:8080"
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+      - "com.docker.compose.service=code-server"
+    networks:
+      - internal
+      - external_net
+
+
+# -----------------------------------------------------------------------
+# Redes
+# -----------------------------------------------------------------------
+networks:
+  internal:
+    driver: bridge
+    labels:
+      - "com.docker.compose.project=${COMPOSE_PROJECT_NAME}"
+  external_net:
+    name: ${DOCKER_NETWORK}   # ✅ el nombre real de la red viene de la variable
+    external: true
+  # FIX: el nombre de la red externa debe coincidir con ${DOCKER_NETWORK}
+  # Asegúrate de crearla antes con: docker network create <nombre>
+#  my_network:
+#    external: true
+
+
+# -----------------------------------------------------------------------
+# Volúmenes
+# -----------------------------------------------------------------------
+volumes:
+  mysql_data:
+    driver: local
+  mysql_logs:
+    driver: local
+  # FIX: volumen nombrado para sesiones de phpMyAdmin
+  pma_sessions:
+    driver: local
+
+# -----------------------------------------------------------------------
+# Comandos útiles
+# -----------------------------------------------------------------------
+# Levantar en modo detach:
+#   docker compose --env-file .env.development up -d
+#
+# Reconstruir sin caché:
+#   docker compose --env-file .env.development build --no-cache
+#
+# Bajar y limpiar:
+#   docker compose down
+#   docker system prune -a
+#
+# Entrar a un contenedor:
+#   docker exec -u root -ti <container_name> bash
+#
+# Ver logs en tiempo real:
+#   docker compose logs -f

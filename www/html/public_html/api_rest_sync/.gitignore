@@ -1,0 +1,21 @@
+# Environment variables
+
+
+# Composer
+/vendor/
+
+# Logs
+/Logs/*.log
+/logs/*.log
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

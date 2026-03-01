@@ -1,0 +1,87 @@
+/*
+version 1.0.1
+**/
+:root {
+  --solu-currencies-primary-color: #de3431;
+  --solu-currencies_sundary-color: #000000;
+  --solu-currencies_text-color: #555555;
+  --solu-currencies_text-info-color: #888888;
+  --solu-currencies_acent-color: #222222;
+  --solu-currencies_border-color: #dfe1e7;
+}
+
+/*
+=======================================
+Style for Desktop
+=======================================
+**/
+
+.tabla_monedas {
+  display: inline-block;
+  width: auto;
+  margin: 0px 0px 12px 0px;
+  padding: 10px 15px 14px 10px;
+  /* border: 1px solid #b1acac; */
+  border: 1px solid var(--solu-currencies_border-color);
+  border-radius: 5px;
+  background-color: var(--monedas-tabla);
+}
+
+.tabla_monedas .cash-current-price .price_sale {
+  color: var(--solu-currencies-primary-color);
+  font-weight: bold;
+  font-size: 1.9em;
+}
+.tabla_monedas .cash-current-price .regular-price {
+  color: var(--solu-currencies_text-color);
+  opacity: 0.5; /* 50% de opacidad */
+  font-weight: 400;
+  font-size: 1.2em;
+  text-decoration: line-through;
+}
+
+.tabla_monedas .cash-info-type,
+.creditCard-info-type {
+  color: var(--solu-currencies_text-info-color);
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.tabla_monedas .creditCard-current-price .price_sale {
+  color: var(--solu-currencies-primary-color);
+  opacity: 0.9; /* 50% de opacidad */
+  font-weight: bold;
+  font-size: 1.5em; /* TamaÃ±o para mÃ³vil */
+}
+.tabla_monedas .tax-label {
+  padding-top: 0.5em;
+  color: var(--solu-currencies_text-color);
+  opacity: 0.9; /* 50% de opacidad */
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+
+
+
+
+/*
+=======================================
+Style for Mobil
+=======================================
+**/
+@media (max-width: 767px) {
+  .solu-currencies-list-price-regular-del,
+  .solu-currencies-list-price-alternative-del {
+    font-size: 1.2em; /* TamaÃ±o para mÃ³vil */
+  }
+
+  .solu-currencies-list-price-local,
+  .solu-currencies-list-price-alternative {
+    font-size: 1.4em; /* TamaÃ±o para mÃ³vil */
+  }
+
+  .tabla_monedas .cash-current-price .regular-price {
+    display: block;
+  }
+}

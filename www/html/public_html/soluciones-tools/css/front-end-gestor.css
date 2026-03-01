@@ -1,0 +1,51 @@
+/*Ocultar Query builder del flatsome que aparece en fron y permite la edicion de la web*/
+.tooltipster-show ,.tooltipster-content {
+    display: none !important
+}
+
+/*
+=======================================================
+ Estilos para el div de regreso al panel de admin
+=======================================================
+
+  */
+#admin-back-link {
+    position: fixed; /* Posición fija para que siempre esté visible */
+    top: 10px; /* Ubicado en la parte superior con algo de margen */
+    left: 10px; /* Ubicado a la izquierda con margen */
+    width: 200px; /* Ancho fijo de 200px */
+    background-color: #333; /* Fondo oscuro */
+    padding: 10px 15px; /* Espaciado interno */
+    text-align: center; /* Texto centrado */
+    z-index: 9999; /* Asegura que se muestre sobre otros elementos */
+    border-radius: 25px; /* Bordes redondeados */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    display: flex; /* Flexbox para alinear el icono y el texto */
+    align-items: center; /* Centrar verticalmente los elementos dentro */
+    justify-content: center; /* Centrar horizontalmente */
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+/* Cambiar el color de fondo en hover */
+#admin-back-link:hover {
+    background-color: #444; /* Cambiar el color de fondo cuando el usuario pasa el ratón */
+}
+
+/* Estilos para el enlace dentro del div */
+#admin-back-link a {
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Quitar subrayado del enlace */
+    font-size: 14px; /* Tamaño de fuente del enlace */
+    margin-left: 8px; /* Separación entre el ícono y el texto */
+}
+
+/* Efecto hover para el enlace */
+#admin-back-link a:hover {
+    text-decoration: underline; /* Subrayar el enlace al pasar el ratón */
+}
+
+/* Estilos para el ícono */
+#admin-back-link i {
+    font-size: 18px; /* Tamaño del ícono */
+    color: #fff; /* Color del ícono */
+}

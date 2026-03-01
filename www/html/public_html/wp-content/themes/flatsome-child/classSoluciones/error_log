@@ -1,0 +1,18 @@
+[05-Jul-2024 22:16:58 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php:147
+Stack trace:
+#0 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php(284): FilterGeoIp->sendRequest()
+#1 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/test_geoIp.php(150): FilterGeoIp->validIpCountry()
+#2 {main}
+  thrown in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php on line 147
+[05-Jul-2024 22:17:18 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php:147
+Stack trace:
+#0 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php(284): FilterGeoIp->sendRequest()
+#1 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/test_geoIp.php(150): FilterGeoIp->validIpCountry()
+#2 {main}
+  thrown in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php on line 147
+[05-Jul-2024 22:22:11 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php:147
+Stack trace:
+#0 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php(284): FilterGeoIp->sendRequest()
+#1 /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/test_geoIp.php(153): FilterGeoIp->validIpCountry()
+#2 {main}
+  thrown in /home/kpopilrp/inversionesletich.com/wp-content/themes/flatsome-child/classSoluciones/filterGeoIp.php on line 147

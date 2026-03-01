@@ -1,0 +1,109 @@
+[mysqld]
+# === CONFIGURACIÓN OPTIMIZADA MARIADB 10.11 ===
+# /etc/mysql/conf.d/custom.cnf
+
+# ---- BÁSICA ----
+user = mysql
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+bind-address = 0.0.0.0
+skip-name-resolve = 1
+
+# ---- CHARSET ----
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+init-connect = 'SET NAMES utf8mb4'
+
+# ---- CONEXIONES ----
+max_connections = 200
+max_connect_errors = 1000000
+wait_timeout = 600
+interactive_timeout = 600
+connect_timeout = 60
+
+# ---- INNODB OPTIMIZACIÓN ----
+# Memoria (ajustar según tu RAM disponible)
+# Memoria (ajustar según tu RAM disponible)
+innodb_buffer_pool_size = 512M          # 50-70% de tu RAM disponible
+# innodb_buffer_pool_size = 2G  # Si tienes 8GB de RAM:
+# innodb_buffer_pool_size = 4G  # Si tienes 16GB+ de RAM:
+
+innodb_log_buffer_size = 32M
+innodb_sort_buffer_size = 2M
+
+# Archivos y tablespaces
+innodb_file_per_table = 1
+innodb_log_file_size = 128M
+innodb_open_files = 400
+
+# Rendimiento I/O
+innodb_use_native_aio = 0                # Deshabilitado para evitar io_uring warnings
+innodb_flush_method = O_DIRECT          # Mejor para SSD/NVMe
+innodb_flush_log_at_trx_commit = 1      # Durabilidad ACID (1=seguro, 2=rápido)
+innodb_io_capacity = 200                # Ajustar: HDD=100, SSD=200, NVMe=500+
+innodb_io_capacity_max = 400
+
+# Bloqueos y concurrencia
+innodb_lock_wait_timeout = 50
+innodb_read_io_threads = 4
+innodb_write_io_threads = 4
+
+# ---- QUERY CACHE (MariaDB optimizada) ----
+query_cache_type = 1
+query_cache_size = 64M
+query_cache_limit = 2M
+query_cache_min_res_unit = 2K
+
+# ---- BUFFERS Y TABLAS TEMPORALES ----
+tmp_table_size = 64M
+max_heap_table_size = 64M
+sort_buffer_size = 2M
+read_buffer_size = 1M
+read_rnd_buffer_size = 2M
+join_buffer_size = 2M
+table_open_cache = 400
+table_definition_cache = 400
+
+# ---- BINLOG (para replicación y backups) ----
+log-bin = mysql-bin
+binlog-format = ROW
+expire-logs-days = 7
+max-binlog-size = 100M
+sync-binlog = 1                         # Durabilidad (1=seguro, 0=rápido)
+
+# ---- LOGGING OPTIMIZADO ----
+general_log = 0                         # Deshabilitado en producción
+slow_query_log = 1
+slow_query_log_file = /var/lib/mysql/slow.log
+long_query_time = 2
+log_queries_not_using_indexes = 0
+
+# ---- SEGURIDAD ----
+local-infile = 0
+skip-show-database = 1
+
+# ---- THREADS Y PROCESOS ----
+thread_cache_size = 50
+thread_stack = 256K
+
+# ---- MyISAM (si usas tablas MyISAM) ----
+key_buffer_size = 32M
+myisam_sort_buffer_size = 64M
+myisam_repair_threads = 1
+
+# ---- OPTIMIZACIÓN ADICIONAL ----
+max_allowed_packet = 128M
+bulk_insert_buffer_size = 8M
+
+[client]
+default-character-set = utf8mb4
+socket = /var/run/mysqld/mysqld.sock
+
+[mysql]
+default-character-set = utf8mb4
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = 128M
+# Configuración limpia - warnings obsoletos removidos

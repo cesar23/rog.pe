@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categorías Zoom</title>
+    <style>
+        :root {
+            --theme-primary-color: #de3431;
+            --theme-secondary-color: #000000;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .grid-categorias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 20px 30px;
+        }
+
+        .categoria {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .categoria:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .categoria h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .categoria h3 a {
+            color: var(--theme-primary-color);
+            text-decoration: none;
+            display: inline-block; /* Necesario para transform */
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+            transform-origin: center center;
+        }
+
+        .categoria h3 a:hover {
+            transform: scale(1.05) translateX(5px);
+            color: var(--theme-secondary-color);
+        }
+
+
+
+
+
+
+
+
+
+        .categoria ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .categoria ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .categoria ul li a {
+            color: #444;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            padding-left: 18px;
+            transition: all 0.25s ease-in-out;
+        }
+
+        .categoria ul li a::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: transform 0.25s ease-in-out;
+            color: #000;
+        }
+
+        .categoria ul li a:hover {
+            color: #000;
+            transform: translateX(6px);
+        }
+
+        .categoria ul li a:hover::before {
+            transform: translateX(4px);
+        }
+
+        /* Responsive mobile */
+        @media (max-width: 768px) {
+            .grid-categorias {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .categoria {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-categorias">
+    <div class="categoria">
+        <h3><a href="/producto-categoria/monitores/">Monitores</a></h3>
+        <ul>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/amplificadores/">Amplificadores</a></li>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/capturadoras/">Capturadoras</a></li>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/controles/">Controles</a></li>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/luces-led/">Luces LED</a></li>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/racks/">Racks</a></li>
+            <li><a href="/producto-categoria/accesorios-para-monitor-y-tv/tv-box/">TV BOX</a></li>
+        </ul>
+    </div>
+
+    <div class="categoria">
+        <h3><a href="/producto-categoria/monitores/">Monitores</a></h3>
+        <ul>
+            <li><a href="/producto-categoria/monitores/monitor-comercial/">Monitor Comercial</a></li>
+            <li><a href="/producto-categoria/monitores/monitor-curvo/">Monitor Curvo</a></li>
+            <li><a href="/producto-categoria/monitores/monitor-curvo-gamer/">Monitor Curvo Gamer</a></li>
+            <li><a href="/producto-categoria/monitores/monitor-gamer/">Monitor Gamer</a></li>
+            <li><a href="/producto-categoria/monitores/monitor-touch-publicitario/">Monitor Touch Publicitario</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

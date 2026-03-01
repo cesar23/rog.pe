@@ -1,0 +1,94 @@
+<!--==============================================================-->
+<!-- 1. Agregar en el style.css de la plantilla del tema activo-->
+<!--==============================================================-->
+<style>
+
+    .grid-categorias {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 30px;
+        padding: 20px 30px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .categoria {
+        padding: 10px 5px;
+    }
+
+    .categoria h3 {
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+
+
+    .categoria h3 a{
+        color: #DE3431;
+        text-decoration: none;
+        display: inline-block; /* Necesario para transform */
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        transform-origin: center center;
+    }
+
+    .categoria h3 a:hover {
+        transform: scale(1.05) translateX(5px);
+        color: var(--theme-secondary-color);
+    }
+
+
+    .categoria ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .categoria ul li {
+        margin-bottom: 8px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .categoria ul li a {
+        color: #444;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        padding-left: 18px;
+        transition: all 0.25s ease-in-out;
+    }
+
+    .categoria ul li a::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: transform 0.25s ease-in-out;
+        color: #000;
+    }
+
+    .categoria ul li a:hover {
+        color: #000;
+        transform: translateX(6px);
+    }
+
+    .categoria ul li a:hover::before {
+        transform: translateX(4px);
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+        .grid-categorias {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+        .categoria {
+            padding: 10px 0;
+        }
+    }
+</style>
+<!--==============================================================-->
+<!-- 2. Apartir de aqui usar el codgo para  usarlo -->
+<!--==============================================================-->

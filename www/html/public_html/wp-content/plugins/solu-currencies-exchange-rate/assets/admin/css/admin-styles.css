@@ -1,0 +1,8 @@
+/* Estilos CSS personalizados para el admin */
+.wp-list-table .column-actions {
+    width: 120px;
+}
+
+.form-table th {
+    width: 150px;
+}

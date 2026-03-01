@@ -1,0 +1,73 @@
+# =============================================================================
+# Archivo: .github/workflows/validate_structure.yml
+# Descripción: Valida la estructura de carpetas del repo.
+# Ejecución: Solo manual (workflow_dispatch) para evitar despliegues automáticos.
+# =============================================================================
+
+name: ✅ Validar Estructura del Repo
+
+on:
+  # Se comentan los disparadores automáticos para evitar ejecuciones en cada push
+  # push:
+  #   branches:
+  #     - master
+
+  # Permite ejecutar el workflow manualmente desde la pestaña "Actions" en GitHub
+  workflow_dispatch:
+
+jobs:
+  validate-structure:
+    name: Verificar carpetas y archivos obligatorios
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: 📜 Mostrar contexto github
+        run: |
+          echo "=== CONTEXTO GITHUB ==="
+          echo "Repositorio completo: ${{ github.repository }}"
+          echo "Propietario: ${{ github.repository_owner }}"
+          echo "Rama/Tag: ${{ github.ref_name }}"
+          echo "Tipo de ref: ${{ github.ref_type }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run Number: ${{ github.run_number }}"
+          echo "URL del servidor: ${{ github.server_url }}/${{ github.repository }}"
+
+      - name: 📜 Mostrar variables de entorno
+        run: |
+          echo "=== VARIABLES DE ENTORNO ==="
+          echo "Directorio de trabajo: $GITHUB_WORKSPACE"
+          echo "Sistema operativo: $RUNNER_OS"
+          echo "Arquitectura: $RUNNER_ARCH"
+          echo "Nombre del runner: $RUNNER_NAME"
+          echo "CI: $CI"
+          echo "Ruta del repositorio local: $(pwd)"
+
+      - name: 📥 Clonar repo (modo antiguo)
+        run: |
+          echo "Clonando repo..."
+          git clone https://:${{ secrets.TOKEN_REPOSITORY }}@github.com/${{ github.repository }} .
+          ls -la
+
+#      # 1️⃣ Clonar el repositorio
+#      - name: 📥 Checkout del repositorio
+#        uses: actions/checkout@v4
+
+      # 2️⃣ Mensaje inicial
+      - name: 🚀 Iniciando validación
+        run: |
+          echo "Iniciando validación del repositorio..."
+          echo "Esperando unos segundos..."
+          sleep 2
+          echo "Comenzando validaciones..."
+
+      # 3️⃣ Dar permisos al script
+      - name: 🔐 Dar permisos al script
+        run: chmod +x scripts_util_wp/validate_structure.sh
+
+      # 4️⃣ Ejecutar validación
+      - name: 🧪 Ejecutar validate_structure.sh
+        run: bash scripts_util_wp/validate_structure.sh

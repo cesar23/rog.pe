@@ -1,0 +1,541 @@
+/*
+Theme Name: Flatsome Child
+Description: This is a child theme for Flatsome Theme
+Author: UX Themes
+Template: flatsome
+Version: 3.0.2
+*/
+
+:root {
+  --theme-primary-color: #de3431;
+  --theme-secondary-color: #000000;
+  --theme-success-color: #7fd07e;
+  --theme-alert-color: #b20000;
+  --theme-text-base: #555555;
+  --theme-text-sku-stock: #ffffff;
+  --theme-text-header-base: #555;
+  --theme-text-link-color: #334862;
+  --theme-text-link-hover-color: #de3431;
+  --theme-text-link-widget-color: #de3431;
+  --theme-text-link-widget-hover-color: #de3431;
+  --theme-tooltip-color: #fff;
+  --theme-tooltip-background-color: #000;
+  --theme-shop-add-card: #000;
+  --theme-shop-sale-buble: #000; /* burbuja venta*/
+  --theme-shop-review-start: #ed1111; /* burbuja venta*/
+  --theme-shop-price-regular: #9e9e9e; /* precio regular*/
+  --theme-shop-price-sale: #de3431; /* precio regular*/
+  --theme-seach-background-color: #CF0008; /* precio regular*/
+  --theme-seach-background-text: #fff; /* precio regular*/
+
+}
+
+/*************** ADD CUSTOM CSS HERE.   ***************/
+.shadow-imagen {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.ocultar {
+  display: none;
+}
+
+.fa-volume-up,
+.fa-volume-off {
+  color: #ffffff;
+  font-size: 14px !important;
+}
+
+.col-no-padding {
+  padding-bottom: 0;
+}
+
+.set-color-primary {
+  color: var(--theme-primary-color) !important;
+}
+
+.set-color-secondary {
+  color: var(--theme-secondary-color) !important;
+}
+
+.list-prod-sku,
+.list-prod-stock {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--theme-text-sku-stock) !important;
+  background: var(--theme-secondary-color) !important;
+  padding: 0.1em;
+  border-radius: 0.7rem !important;
+  margin-top: 0.3em !important;
+  margin-bottom: 0.3em !important;
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+}
+
+/* Este estilo agrandar el titulo de los litados */
+.box-text .name.product-title {
+  font-size: 1.1em;
+}
+
+.product_list_widget .product-title {
+  font-size: 0.9em;
+}
+
+/*
+=================================================
+ESTILOS SIMPLES PARA INFORMACIÓN DE STOCK
+=================================================
+*/
+
+/* Contenedor del stock */
+.stock {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+}
+
+/* Etiqueta "Stock:" */
+.stock-label {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #333;
+  margin-right: 8px;
+}
+
+/* Valor del stock */
+.stock-value {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: var(--theme-primary-color);
+  background: rgba(222, 52, 49, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Stock en stock */
+.stock.in-stock .stock-value {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+/* Sin stock */
+.stock.out-of-stock .stock-value {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+/*
+=================================================
+ESTILOS listado precios
+=================================================
+*/
+.price-wrapper .price{
+  font-size: 1.3em;
+}
+
+
+/*
+=================================================
+ESTILOS PARA METADATA DEL PRODUCTO (SKU, CATEGORÍAS, MARCA)
+=================================================
+*/
+
+/* Contenedor principal de metadata */
+
+
+/* SKU */
+.sku_wrapper {
+  
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.sku_wrapper .sku {
+
+  font-weight: 600;
+  color: var(--theme-secondary-color);
+  background: rgba(222, 52, 49, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+/* Etiquetas */
+.tagged_as {
+  
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.tagged_as a {
+  color: var(--theme-primary-color);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+.tagged_as a:hover {
+  color: var(--theme-secondary-color);
+
+}
+
+
+/* Categorías y Marca */
+.posted_in {
+  
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.posted_in a {
+  color: var(--theme-primary-color);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.posted_in a:hover {
+  color: var(--theme-secondary-color);
+
+}
+
+/*
+=================================================
+ESTILOS PARA FUENTE DE LETRA MONTSERRAT
+::: recuerda cargarlo antes: add_action('wp_enqueue_scripts', 'load_google_fonts_front');
+=================================================
+ */
+
+/* Montserrat: Regular 400 */
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.montserrat-regular-italic {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+}
+
+/* Montserrat: Medium 500 */
+.montserrat-medium {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 500 !important;
+}
+
+.montserrat-medium-italic {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+}
+
+/* Montserrat: Bold 700 */
+.montserrat-bold {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.montserrat-bold-italic {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  line-height: 0.9; /* Ajuste de interlineado */
+}
+
+/* Montserrat: ExtraBold 800 */
+.montserrat-extrabold {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.montserrat-extrabold-italic {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 800 !important;
+  font-style: italic !important;
+  line-height: 0.9; /* Ajuste de interlineado */
+}
+
+/* Montserrat: Black 900 */
+.montserrat-black {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 900 !important;
+  line-height: 0.9; /* Ajuste de interlineado */
+}
+
+.montserrat-black-italic {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  line-height: 0.9; /* Ajuste de interlineado */
+}
+
+/* Interlineado */
+.line-height-h1 {
+  line-height: 0.8 !important;
+}
+/* Interlineado */
+.line-height-h2 {
+  line-height: 0.3;
+}
+/*Ejepmlos de uso
+class="montserrat-extrabold-italic line-height-h1"
+*/
+
+/* ===============================================
+Estilos para cambiar aspecto del buscador
+=============================================== */
+
+/* Estilo plano y limpio al formulario de búsqueda del header */
+.header-search-form-wrapper {
+  background-color: white; /* Fondo blanco */
+  border-radius: 4px; /* Bordes redondeados suaves */
+  box-shadow: none; /* Sin sombra (estilo flat) */
+  padding: 5px 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde sutil */
+}
+
+/* El input del campo de búsqueda */
+.header-search-form-wrapper .search-field {
+  background-color: transparent; /* Fondo blanco ya está en el contenedor */
+  border: none; /* Quitar borde del input */
+  box-shadow: none; /* Quitar sombra */
+  color: #333; /* Texto oscuro */
+  font-size: 14px;
+}
+
+/* Botón de búsqueda */
+.header-search-form-wrapper .ux-search-submit {
+  background-color: transparent; /* Sin fondo */
+  border: none; /* Sin borde */
+  color: #555; /* Icono color oscuro */
+  padding: 0 8px;
+}
+
+/* Icono dentro del botón */
+.header-search-form-wrapper .ux-search-submit i {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Cuando se enfoca el input */
+.header-search-form-wrapper .search-field:focus {
+  outline: none;
+}
+
+/* Cambiar el color del loader del botón de búsqueda */
+.ux-search-submit.loading::after {
+  border-color: #333 transparent transparent transparent !important; /* Cambia #333 por el color que desees */
+  transition: border-color 0.3s ease !important;
+}
+
+/* Ocultar el icono de búsqueda cuando el botón tiene clase .loading */
+.ux-search-submit.loading .icon-search {
+  display: none !important;
+}
+
+/* Padding par las marcas no se junten */
+.ux-product-brands {
+  padding: 0.5em;
+}
+
+@media only screen and (max-width: 48em) {
+  /*************** ADD MOBILE ONLY CSS HERE  ***************/
+}
+
+/*===================================================*/
+/* Personalizar front */
+/*===================================================*/
+
+/* Listado Productos - alineado*/
+.box-text-products{
+  text-align: center;
+}
+
+/*===================================================*/
+/*Mega menu css*/
+/*===================================================*/
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  padding: 20px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.categoria {
+  padding: 10px 5px;
+}
+
+.categoria h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+
+.categoria h3 a{
+  color: #DE3431;
+  text-decoration: none;
+  display: inline-block; /* Necesario para transform */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  transform-origin: center center;
+}
+
+.categoria h3 a:hover {
+  transform: scale(1.05) translateX(5px);
+  color: var(--theme-secondary-color);
+}
+
+
+.categoria ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.categoria ul li {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.categoria ul li a {
+  color: #444;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  padding-left: 18px;
+  transition: all 0.25s ease-in-out;
+}
+
+.categoria ul li a::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.25s ease-in-out;
+  color: #000;
+}
+
+.categoria ul li a:hover {
+  color: #000;
+  transform: translateX(6px);
+}
+
+.categoria ul li a:hover::before {
+  transform: translateX(4px);
+}
+
+
+/* 
+Para las viñetas de los textos generados por uxblock
+*/
+#content .page-inner ul li {
+  list-style: none;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+}
+
+#content .page-inner ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.9em;              /* centrado visual del punto */
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--theme-primary-color);
+  border-radius: 50%;
+}
+
+/* Si tienes sub-listas, haz el punto un poco más pequeño */
+#content .page-inner ul ul li::before {
+  width: 6px;
+  height: 6px;
+}
+
+/* ===================================================================
+   ESTILOS PARA FIX DE LIVE SEARCH - FLATSOME
+   Asegura que los resultados sean clickeables y visualmente correctos
+   =================================================================== */
+
+/* Contenedor principal de sugerencias */
+.autocomplete-suggestions {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  position: absolute !important;
+  background-color: #fff !important;
+  color: var(--theme-secondary-color) !important;
+}
+
+/* Cada sugerencia individual */
+.autocomplete-suggestion {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Hover state */
+.autocomplete-suggestion:hover,
+.autocomplete-suggestion.autocomplete-selected {
+  background-color: var(--theme-seach-background-color) !important;
+  color: #fff !important;
+}
+
+/*
+   CRÍTICO: Los elementos hijos NO deben interceptar eventos de clic
+   Esto permite que el clic "pase" al elemento padre
+*/
+.autocomplete-suggestion img,
+.autocomplete-suggestion .search-image,
+.autocomplete-suggestion .search-name,
+.autocomplete-suggestion .search-price,
+.autocomplete-suggestion span,
+.autocomplete-suggestion div,
+.autocomplete-suggestion strong {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* Asegurar que las imágenes no se puedan arrastrar */
+.autocomplete-suggestion img {
+  -webkit-user-drag: none !important;
+  -khtml-user-drag: none !important;
+  -moz-user-drag: none !important;
+  -o-user-drag: none !important;
+  user-drag: none !important;
+}
+
+
+/* ===================================================================
+   END - ESTILOS PARA FIX DE LIVE SEARCH
+   =================================================================== */
+
+/* ocultar menu de enlaces de footer */
+.theme-flatsome #footer
+.menu-secondary-container{
+    display:none;
+}
+
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .grid-categorias {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .categoria {
+    padding: 10px 0;
+  }
+}
