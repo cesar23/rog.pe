@@ -15,7 +15,9 @@ data/*
 Resources/*
 !Resources/*.psd
 !Resources/*.ai
-!Resources/sql/rog_web.sql
+!Resources/sql/
+Resources/sql/*
+!Resources/sql/rog_web_2026-02-24.sql.zip
 
 # ============================================
 # WORDPRESS CORE
