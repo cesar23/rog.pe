@@ -2,11 +2,12 @@
 
 function solu_currencies_exchange_add_admin_menus()
 {
-    global $allowed_emails;
+    global $allowed_emails_currencies;
     $current_user = wp_get_current_user();
     $admin = new Solu_Currencies_Exchange_Admin();
+//    var_dump($current_user->user_email,$allowed_emails_currencies);
 
-    if (in_array($current_user->user_email, $allowed_emails)) {
+    if (in_array($current_user->user_email, $allowed_emails_currencies)) {
         add_menu_page(
             __('Solu Currencies Exchange', 'solu-currencies-exchange'), // Page title
             __('Listado de monedas', 'solu-currencies-exchange'),      // Menu title

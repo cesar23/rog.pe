@@ -11,3 +11,14 @@ try {
 }
 "
 ```
+
+```phpregexp
+<?php
+try {
+    $pdo = new PDO('mysql:host=mariadb;dbname=rog_web', 'rog_web', 'cesar203');
+    echo '✅ Conexión OK' . PHP_EOL;
+} catch (PDOException \$e) {
+    echo '❌ ' . \$e->getMessage() . PHP_EOL;
+}
+
+```

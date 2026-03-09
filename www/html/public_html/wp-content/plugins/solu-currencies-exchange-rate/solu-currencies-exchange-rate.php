@@ -25,7 +25,7 @@ global $wpdb;
 // Nombre del plugin
 define('SOLU_CURRENCIES_EXCHANGE_NAME_PLUGIN', 'solu_currencies_exchange');
 // Versión del plugin
-define('SOLU_CURRENCIES_EXCHANGE_VERSION', '2.1.0');
+define('SOLU_CURRENCIES_EXCHANGE_VERSION', '2.2.0');
 // Ruta del directorio del plugin
 define('SOLU_CURRENCIES_EXCHANGE_PATH', plugin_dir_path(__FILE__));
 // URL del directorio del plugin

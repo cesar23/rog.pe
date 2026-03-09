@@ -85,6 +85,7 @@ const pagesAllow = [
     // Subidas de WordPress
     '/wp-admin/upload.php',
     '/wp-admin/upload.php?page=add-external-media-without-import',
+    // '/wp-admin/admin.php?page=solu-currencies-exchange',
 ];
 
 /**
@@ -95,7 +96,7 @@ const titlesEnables = ["Slider"];
 /**
  * ID de elementos del menú que solo deben aparecer para el usuario tipo gestor
  */
-const li_activos_menu = ["menu-media", "menu-posts-product", "menu-dashboard", "toplevel_page_woocommerce","menu-posts-blocks"];
+const li_activos_menu = ["menu-media", "menu-posts-product", "menu-dashboard", "toplevel_page_woocommerce","menu-posts-blocks","toplevel_page_solu-currencies-exchange"];
 //const li_activos_menu = ["menu-media", "menu-posts-product", "menu-dashboard", "menu-posts-blocks", "toplevel_page_woocommerce","toplevel_page_solu-product-logs"];
 
 /**

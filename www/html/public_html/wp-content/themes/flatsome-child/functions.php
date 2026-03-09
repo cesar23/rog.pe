@@ -389,14 +389,17 @@ $config_child_cesar = [
         'array_users_admin' => $array_users_admin,
     ],
     'usuarios_opciones_menu_adicionales' => [2, 3],
+
     'personalizar_menu' => [
         'debug' => 1,
         'active' => 1,
+        //Aqui poner los nombres de los plugins
         'show_menus' => [
             'index.php',
             'upload.php',
             'woocommerce',
             'edit.php?post_type=product',
+            'solu-currencies-exchange',
             'menu_v1_root',
         ],
         'sub_menus_del_array' => [

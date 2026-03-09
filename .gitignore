@@ -4,6 +4,8 @@
 docs_devops/
 project_structure_docs/
 
+
+tmp
 # ============================================
 # Data que genera docker
 # ============================================
@@ -108,3 +110,10 @@ node_modules/
 *.tmp
 *.bak
 .htaccess.bk
+
+# ============================================
+# confíe en ese directorio aunque esté owned por un usuario diferente
+# Se usa  para  directorios en WSL o directorios de windows montados
+# ============================================
+[safe]
+    directory = /mnt/e/projects_webs_resources/rog.pe

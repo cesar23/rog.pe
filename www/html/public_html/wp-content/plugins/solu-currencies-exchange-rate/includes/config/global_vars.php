@@ -25,4 +25,4 @@ $solu_currencies = array(
 );
 
 // SOLO ESTOS USUARIOS PUEDEN VER EL MENU
-$allowed_emails = array('perucaos@gmail.com', 'editor2@solucionesssystem.com', 'juan@gmail.com', 'ventas@pcbyte.com.pe'); // Solo estos correos tendrán acceso
+$allowed_emails_currencies = array('perucaos@gmail.com','cgms@rog.pe', 'editor2@solucionesssystem.com', 'juan@gmail.com', 'ventas@pcbyte.com.pe'); // Solo estos correos tendrán acceso
